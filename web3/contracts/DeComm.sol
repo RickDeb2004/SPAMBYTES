@@ -8,8 +8,10 @@ contract DeComm {
     enum OrderStatus {
         Placed,
         InChain,
+        DeliveryPricePayed,
         DeliveryConfirmByDP,
-        Delivered
+        Delivered,
+        DeliveryDetailsAdded
     }
 
     uint productId = 1;
@@ -50,13 +52,12 @@ contract DeComm {
     }
 
     struct Order {
-        uint256 time;
         uint orderId;
         uint quantity;
         address buyer;
         bool bid; //true when available for bidding false when delivery is assigned to delivery person
         address deliveryPerson;
-        uint deliverPrice;
+        uint deliveryPrice;
         string deliveryTime;
         uint orderPrice;
         address payable seller;
@@ -204,13 +205,11 @@ contract DeComm {
         Order memory order;
 
         order.buyer = msg.sender;
-        order.time = block.timestamp;
         order.quantity = _quantity;
         order.bid = true;
         order.orderId = orderId;
         order.bidding.started = true;
         order.bidding.endAt = block.timestamp + 60 seconds;
-        order.deliverPrice = 1e18;
         order.orderPrice = products[_productId].price * _quantity;
         order.seller = products[_productId].seller;
 
@@ -224,15 +223,31 @@ contract DeComm {
         products[_productId].availableQuantity -= _quantity;
     }
 
-    function endBid(
+    function addDeliveryDetails(
         uint _orderId,
         address _deliveryPerson,
         string memory _deliveryTime,
         uint _deliveryPrice
     ) private {
+        require(
+            orderList[_orderId].status == OrderStatus.Placed,
+            "Access denied"
+        );
         orderList[_orderId].deliveryPerson = _deliveryPerson;
         orderList[_orderId].deliveryTime = _deliveryTime;
-        orderList[_orderId].deliverPrice = _deliveryPrice;
+        orderList[_orderId].deliveryPrice = _deliveryPrice;
+        orderList[_orderId].status = OrderStatus.DeliveryDetailsAdded;
+    }
+
+    function payDeliveryPrice(uint _orderId, uint _dprice) public payable {
+        require(orderList[_orderId].status == OrderStatus.DeliveryDetailsAdded);
+        require(orderList[_orderId].buyer == msg.sender, "Access denied");
+        require(
+            _dprice == orderList[_orderId].deliveryPrice,
+            "Send exact amount"
+        );
+
+        orderList[_orderId].status = OrderStatus.DeliveryPricePayed;
     }
 
     function pickupOrder(uint _orderId) public {
@@ -241,7 +256,7 @@ contract DeComm {
             "Access denied"
         );
         require(
-            orderList[_orderId].status == OrderStatus.Placed,
+            orderList[_orderId].status == OrderStatus.DeliveryDetailsAdded,
             "Order not availbale"
         );
 
@@ -263,7 +278,7 @@ contract DeComm {
 
     function confirmDeliveryCustomer(uint _orderId) public payable {
         require(
-            msg.value == orderList[_orderId].deliverPrice,
+            msg.value == orderList[_orderId].deliveryPrice,
             "Pay the delivery price"
         );
         require(orderList[_orderId].buyer == msg.sender, "Access denied");
@@ -288,6 +303,6 @@ contract DeComm {
         payable(orderList[_orderId].seller).transfer(
             orderList[_orderId].orderPrice
         );
-        payable(msg.sender).transfer(orderList[_orderId].deliverPrice);
+        payable(msg.sender).transfer(orderList[_orderId].deliveryPrice);
     }
 }
