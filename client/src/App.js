@@ -3,8 +3,6 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import Route from "./components/Route";
 import NavBar from "./components/NavBar";
-import ButtonPage from "./pages/ButtonPage";
-import ModalPage from "./pages/ModalPage";
 import Button from "./components/Button";
 import abi from "./artifacts/contracts/DeEcomm.sol/DeEcomm.json";
 import PhNumberVerification from "./pages/PhNumberVerification";
