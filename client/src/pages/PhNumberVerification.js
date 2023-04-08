@@ -74,6 +74,7 @@ const PhNumberVerification = ({ contract, signer }) => {
 
     return (
         <section className="bg-emerald-500 flex items-center justify-center h-screen">
+            <h1>Phone Number Verification</h1>
             <div>
                 <Toaster toastOptions={{ duration: 4000 }} />
                 <div id="recaptcha-container"></div>

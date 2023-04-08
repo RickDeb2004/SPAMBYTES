@@ -1,11 +1,12 @@
 import React from "react";
 import Route from "./components/Route";
-import CustomerSignup_1s from "./pages/CustomerSignup_1";
-import SellerSignUp_1 from "./pages/SellerSignup_1";
+import CustomerSignup_1 from "./pages/CustomerSignup_1";
+import SellerSignup_1 from "./pages/SellerSignup_1";
 import LandingPage from "./pages/LandingPage";
 import DeliveryPersonSignUp from "./pages/DeliveryPersonSignUp";
 import PhNumberVerification from "./pages/PhNumberVerification";
 import CustomerSignup_2 from "./pages/CustomerSignup_2";
+import SellerSignup_2 from "./pages/CustomerSignup_2";
 
 const App = () => {
     return (
@@ -14,10 +15,13 @@ const App = () => {
                 <LandingPage />
             </Route>
             <Route path="/seller_signup">
-                <SellerSignUp_1 />
+                <SellerSignup_1 />
+            </Route>
+            <Route path="/seller_signup2">
+                <SellerSignup_2 />
             </Route>
             <Route path="/buyer_signup">
-                <CustomerSignup_1s />
+                <CustomerSignup_1 />
             </Route>
             <Route path="/dp_signup">
                 <DeliveryPersonSignUp />

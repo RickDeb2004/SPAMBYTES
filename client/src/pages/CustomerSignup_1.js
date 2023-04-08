@@ -19,6 +19,7 @@ const CustomerSignup_1 = () => {
 
     return (
         <div>
+            <h1>Buyer SignUp</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     value={firstName}
