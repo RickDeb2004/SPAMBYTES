@@ -1,27 +1,18 @@
 import React from "react";
-import { useState } from "react";
-import Dropdown from "../components/Dropdown";
+import Link from "../components/Link";
 import NavBar from "../components/NavBar";
 
 const HomePage = ({ address }) => {
-    const links = [
-        {
-            label: "Seller SignUp",
-            path: "/seller_signup",
-        },
-        {
-            label: "Buyer SignUp",
-            path: "/buyer_signup",
-        },
-        {
-            label: "DP_SignUp",
-            path: "/dp_signup",
-        },
-    ];
+    const link = {
+        label: "Buyer SignUp",
+        path: "/buyer_signup",
+    };
 
     return (
         <div>
-            <NavBar links={links} address={address} />
+            <NavBar link={link} address={address} />
+            <Link to="/seller_signup">Seller Sign Up</Link>
+            <Link to="/dp_signup">Delivery Company Sign Up</Link>
         </div>
     );
 };
