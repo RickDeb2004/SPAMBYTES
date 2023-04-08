@@ -14,7 +14,7 @@ const CustomerSignup_1 = () => {
         console.log(
             `First Name is ${firstName}, Last Name is ${lastName} and the email address is ${email}`
         );
-        navigate("/ph_verify");
+        navigate("/buyer_signup_2");
     };
 
     return (

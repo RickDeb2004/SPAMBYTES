@@ -25,7 +25,9 @@ const App = () => {
             <Route path="/ph_verify">
                 <PhNumberVerification />
             </Route>
-            <Route path="/buyer_signup_2"></Route>
+            <Route path="/buyer_signup_2">
+                <CustomerSignup_2 />
+            </Route>
         </div>
     );
 };
