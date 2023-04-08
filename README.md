@@ -7,5 +7,5 @@ This requires the implementation of blockchain based supply chain systems, as it
 ##Solution
 ##Solution:
 Authentication made via Firebase and Google Auth.
-• Built a ML model to predict Gas Prices of ethereum exchange with an API to implement the same!
+• Built a ML model to predict Gas Prices of ethereum exchange with an API to implement the same
 • Built Smart Contracts to store data of buyers, sellers and delivery persons and connected it with the frontend!
