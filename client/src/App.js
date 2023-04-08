@@ -5,7 +5,8 @@ import CustomerSignup_1 from "./pages/CustomerSignup_1";
 import SellerSignup_1 from "./pages/SellerSignup_1";
 import LandingPage from "./pages/LandingPage";
 import DeliveryPersonSignUp from "./pages/DeliveryPersonSignUp";
-import PhNumberVerification from "./pages/PhNumberVerification";
+import PhNumberVerificationCustomer from "./pages/PhNumberVerificationCustomer";
+import PhNumberVerificationSeller from "./pages/PhNumberVerificationSeller";
 import CustomerSignup_2 from "./pages/CustomerSignup_2";
 import SellerSignup_2 from "./pages/CustomerSignup_2";
 import HomePage from "./pages/HomePage";
@@ -75,8 +76,20 @@ const App = () => {
                 />
             </Route>
 
-            <Route path="/ph_verify">
-                <PhNumberVerification />
+            <Route path="/ph_verify_cus">
+                <PhNumberVerificationCustomer
+                    contract={contract}
+                    provider={provider}
+                    signer={signer}
+                />
+            </Route>
+
+            <Route path="/ph_verify_sell">
+                <PhNumberVerificationSeller
+                    contract={contract}
+                    provider={provider}
+                    signer={signer}
+                />
             </Route>
 
             <Route path="/buyer_signup_2">

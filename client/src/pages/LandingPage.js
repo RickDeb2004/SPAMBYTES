@@ -5,6 +5,8 @@ import Button from "../components/Button";
 import abi from "../artifacts/contracts/DeEcomm.sol/DeEcomm.json";
 import useNavigation from "../hooks/use-navigation";
 
+//import config from "../config.json";
+
 const LandingPage = ({
     getDefaultAccount,
     getSigner,
@@ -38,6 +40,7 @@ const LandingPage = ({
                 });
 
                 const provider = new ethers.providers.Web3Provider(ethereum);
+                const network = await provider.getNetwork();
                 const signer = provider.getSigner();
                 const contract = new ethers.Contract(
                     contractAddress,

@@ -11,7 +11,7 @@ import Button from "../components/Button";
 
 import "react-phone-input-2/lib/style.css";
 
-const PhNumberVerification = ({ contract, signer }) => {
+const PhNumberVerificationCustomer = ({ contract, signer }) => {
     const [otp, setOtp] = useState("");
     const [ph, setPh] = useState("");
     const [loading, setLoading] = useState(false);
@@ -74,7 +74,6 @@ const PhNumberVerification = ({ contract, signer }) => {
 
     return (
         <section className="bg-emerald-500 flex items-center justify-center h-screen">
-            <h1>Phone Number Verification</h1>
             <div>
                 <Toaster toastOptions={{ duration: 4000 }} />
                 <div id="recaptcha-container"></div>
@@ -151,4 +150,4 @@ const PhNumberVerification = ({ contract, signer }) => {
     );
 };
 
-export default PhNumberVerification;
+export default PhNumberVerificationCustomer;

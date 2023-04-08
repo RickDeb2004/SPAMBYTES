@@ -24,7 +24,7 @@ const CustomerSignup_2 = () => {
             alert("Fill Details");
         } else {
             e.preventDefault();
-            navigate("/ph_verify");
+            navigate("/ph_verify_cus");
         }
     };
 
