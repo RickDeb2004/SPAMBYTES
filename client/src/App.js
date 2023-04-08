@@ -44,19 +44,35 @@ const App = () => {
             </Route>
 
             <Route path="/seller_signup">
-                <SellerSignup_1 />
+                <SellerSignup_1
+                    contract={contract}
+                    provider={provider}
+                    signer={signer}
+                />
             </Route>
 
             <Route path="/seller_signup2">
-                <SellerSignup_2 />
+                <SellerSignup_2
+                    contract={contract}
+                    provider={provider}
+                    signer={signer}
+                />
             </Route>
 
             <Route path="/buyer_signup">
-                <CustomerSignup_1 />
+                <CustomerSignup_1
+                    contract={contract}
+                    provider={provider}
+                    signer={signer}
+                />
             </Route>
 
             <Route path="/dp_signup">
-                <DeliveryPersonSignUp />
+                <DeliveryPersonSignUp
+                    contract={contract}
+                    provider={provider}
+                    signer={signer}
+                />
             </Route>
 
             <Route path="/ph_verify">
@@ -64,7 +80,11 @@ const App = () => {
             </Route>
 
             <Route path="/buyer_signup_2">
-                <CustomerSignup_2 />
+                <CustomerSignup_2
+                    contract={contract}
+                    provider={provider}
+                    signer={signer}
+                />
             </Route>
 
             <Route path="/home_page">

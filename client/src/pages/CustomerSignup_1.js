@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../components/Button";
 import useNavigation from "../hooks/use-navigation";
 
-const CustomerSignup_1 = () => {
+const CustomerSignup_1 = ({ contract, signer, provider }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
