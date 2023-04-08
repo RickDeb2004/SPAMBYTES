@@ -2,11 +2,11 @@ const { ethers } = require("hardhat");
 
 const main = async () => {
     //Creating contract factory meaning adding abi, provider, address, etc.
-    const DeEcommFactory = await ethers.getcontractFactory("DeEComm");
+    const DeEcommFactory = await ethers.getContractFactory("DeEcomm");
 
     //Deploying contract using contract factory.
     console.log("Deploying Contract...");
-    const supplyChian = await DeEcommFactory.deploy();
+    const deEcomm = await DeEcommFactory.deploy();
     await deEcomm.deployed();
     console.log(`Contract deployed at: ${deEcomm.address}`);
 
