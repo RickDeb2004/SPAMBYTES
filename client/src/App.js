@@ -56,37 +56,40 @@ const App = () => {
     console.log(contract);
 
     return (
-        <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
-            {defaultAccount ? (
-                <Button primary type="button" className="nav__connect mb-5">
-                    {defaultAccount.slice(0, 6) +
-                        "..." +
-                        defaultAccount.slice(38, 42)}
-                </Button>
-            ) : (
-                <Button
-                    primary
-                    type="button"
-                    className="nav__connect mb-5"
-                    onClick={connectWallet}
-                >
-                    Connect
-                </Button>
-            )}
+        // <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
+        //     {defaultAccount ? (
+        //         <Button primary type="button" className="nav__connect mb-5">
+        //             {defaultAccount.slice(0, 6) +
+        //                 "..." +
+        //                 defaultAccount.slice(38, 42)}
+        //         </Button>
+        //     ) : (
+        //         <Button
+        //             primary
+        //             type="button"
+        //             className="nav__connect mb-5"
+        //             onClick={connectWallet}
+        //         >
+        //             Connect
+        //         </Button>
+        //     )}
 
-            <NavBar />
-            <div className="col-span-5">
-                <Route path="/">App</Route>
-                <Route path="/buttons">
-                    <ButtonPage />
-                </Route>
-                <Route path="/modal">
-                    <ModalPage />
-                </Route>
-                <Route path="/phVeri">
-                    <PhNumberVerification />
-                </Route>
-            </div>
+        //     <NavBar />
+        //     <div className="col-span-5">
+        //         <Route path="/">App</Route>
+        //         <Route path="/buttons">
+        //             <ButtonPage />
+        //         </Route>
+        //         <Route path="/modal">
+        //             <ModalPage />
+        //         </Route>
+        //         <Route path="/phVeri">
+        //             <PhNumberVerification />
+        //         </Route>
+        //     </div>
+        // </div>
+        <div>
+            <NavBar address="0xb71e14b6c26d6109AA40ae452b049995CD6e38Ba" />
         </div>
     );
 };
