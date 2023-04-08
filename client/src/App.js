@@ -20,10 +20,27 @@ const App = () => {
         setDefaultAccount(account);
     };
 
+    const getContract = (contract) => {
+        setContract(contract);
+    };
+
+    const getProvider = (provider) => {
+        setProvider(provider);
+    };
+
+    const getSigner = (signer) => {
+        setSigner(signer);
+    };
+
     return (
         <div className="col-span-5">
             <Route path="/">
-                <LandingPage getDefaultAccount={getDefaultAccount} />
+                <LandingPage
+                    getDefaultAccount={getDefaultAccount}
+                    getContract={getContract}
+                    getProvider={getProvider}
+                    getSigner={getSigner}
+                />
             </Route>
 
             <Route path="/seller_signup">

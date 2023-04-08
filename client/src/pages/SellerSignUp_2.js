@@ -20,8 +20,12 @@ const SellerSignup_2 = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        navigate("/ph_verify");
+        if ((!address, !Country, !teritory, !city, !pincode)) {
+            alert("Fill Details");
+        } else {
+            e.preventDefault();
+            navigate("/ph_verify");
+        }
     };
 
     return (

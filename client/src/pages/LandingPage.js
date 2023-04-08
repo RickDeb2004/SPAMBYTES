@@ -5,7 +5,12 @@ import Button from "../components/Button";
 import abi from "../artifacts/contracts/DeEcomm.sol/DeEcomm.json";
 import useNavigation from "../hooks/use-navigation";
 
-const LandingPage = ({ getDefaultAccount }) => {
+const LandingPage = ({
+    getDefaultAccount,
+    getSigner,
+    getProvider,
+    getContract,
+}) => {
     const [defaultAccount, setDefaultAccount] = useState(null);
     const [provider, setProvider] = useState(null);
     const [contract, setContract] = useState(null);
@@ -58,7 +63,11 @@ const LandingPage = ({ getDefaultAccount }) => {
         <div>
             {defaultAccount ? (
                 //<PhNumberVerification contract={contract} signer={signer} />
-                (getDefaultAccount(defaultAccount), navigate("/home_page"))
+                (getDefaultAccount(defaultAccount),
+                navigate("/home_page"),
+                getContract(contract),
+                getProvider(provider),
+                getSigner(signer))
             ) : (
                 <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
                     <Button
