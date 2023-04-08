@@ -77,6 +77,14 @@ contract DeEcomm {
 
     address[] public deliverPersonAddressArray;
 
+    function buyerSignUpCheck(address _address) public view returns (bool) {
+        if (buyers[_address].locationPinCode != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     modifier onlySellers() {
         require(sellers[msg.sender].locationPinCode != 0, "Access denied");
         _;

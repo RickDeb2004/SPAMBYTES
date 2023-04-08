@@ -1,20 +1,9 @@
 import React from "react";
-import { useState } from "react";
 import Link from "./Link";
 import Button from "./Button";
+import Link2 from "./Link";
 
 const NavBar = ({ address }) => {
-    const links = [
-        {
-            label: "Homepage",
-            path: "/",
-        },
-        {
-            label: "SignUp",
-            path: "/signup",
-        },
-    ];
-
     return (
         <nav className="bg-gray-800">
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -39,7 +28,7 @@ const NavBar = ({ address }) => {
                         </form>
                     </div>
                 </div>
-                <Link>SignUp</Link>
+                <Link2>SignUp</Link2>
                 <div>{address.slice(0, 6) + "..."}</div>
             </div>
         </nav>

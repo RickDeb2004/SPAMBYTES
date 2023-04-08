@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const CustomerSignup = () => {
+const CustomerSignup_1 = () => {
     //const []
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -110,10 +110,10 @@ const CustomerSignup = () => {
                 <button
                     className="cursor-pointer [border:none] p-0 bg-mediumturquoise absolute top-[876px] left-[556px] rounded-[15px] w-[395px] h-[99px]"
                     onClick={() => {
-                        if (temp == "Customer") {
+                        if (temp === "Customer") {
                             navigate("/customer-signup-2");
                         }
-                        if (temp == "Seller") {
+                        if (temp === "Seller") {
                             navigate("/seller-signup");
                         }
                     }}
@@ -129,4 +129,4 @@ const CustomerSignup = () => {
     );
 };
 
-export default CustomerSignup;
+export default CustomerSignup_1;

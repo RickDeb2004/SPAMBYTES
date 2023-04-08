@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { ethers } from "ethers";
-import Route from "./components/Route";
+import Route2 from "./components/Route2";
 import NavBar from "./components/NavBar";
 import Button from "./components/Button";
 import abi from "./artifacts/contracts/DeEcomm.sol/DeEcomm.json";
+import CustomerSignup_1 from "./pages/CustomerSignup_1s";
+import HomePage from "./pages/HomePage";
 import PhNumberVerification from "./pages/PhNumberVerification";
+import Link2 from "./components/Link";
+import ButtonPage from "./pages/ButtonPage";
 
 const App = () => {
     const [defaultAccount, setDefaultAccount] = useState(null);
@@ -14,7 +18,7 @@ const App = () => {
     const [signer, setSigner] = useState(null);
 
     const connectWallet = async () => {
-        const contractAddress = "0x4ba2C480d0e25c6fE7fad819Eaa8CEaa7cB6c82B";
+        const contractAddress = "0x47fF986531908B1C0fBDeE03292415A7DC8aD843";
         const contractABI = abi.abi;
         try {
             const { ethereum } = window;
@@ -43,6 +47,9 @@ const App = () => {
                 setProvider(provider);
                 setSigner(signer);
                 setContract(contract);
+                console.log(provider);
+                console.log(signer);
+                console.log(contract);
             } else {
                 alert("Please install metamask");
             }
@@ -51,44 +58,36 @@ const App = () => {
         }
     };
 
-    console.log(contract);
+    const links = [];
+
+    const rederedPages = async () => {
+        let value = await contract.buyerSignUpCheck(defaultAccount.toString());
+        console.log(value);
+    };
 
     return (
-        // <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
-        //     {defaultAccount ? (
-        //         <Button primary type="button" className="nav__connect mb-5">
-        //             {defaultAccount.slice(0, 6) +
-        //                 "..." +
-        //                 defaultAccount.slice(38, 42)}
-        //         </Button>
-        //     ) : (
-        //         <Button
-        //             primary
-        //             type="button"
-        //             className="nav__connect mb-5"
-        //             onClick={connectWallet}
-        //         >
-        //             Connect
-        //         </Button>
-        //     )}
-
-        //     <NavBar />
-        //     <div className="col-span-5">
-        //         <Route path="/">App</Route>
-        //         <Route path="/buttons">
-        //             <ButtonPage />
-        //         </Route>
-        //         <Route path="/modal">
-        //             <ModalPage />
-        //         </Route>
-        //         <Route path="/phVeri">
-        //             <PhNumberVerification />
-        //         </Route>
-        //     </div>
-        // </div>
         <div>
-            <NavBar address="0xb71e14b6c26d6109AA40ae452b049995CD6e38Ba" />
+            {defaultAccount ? (
+                <PhNumberVerification contract={contract} signer={signer} />
+            ) : (
+                <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
+                    <Button
+                        primary
+                        type="button"
+                        className="nav__connect mb-5"
+                        onClick={connectWallet}
+                    >
+                        Connect
+                    </Button>
+                </div>
+            )}
+
+            <div className="col-span-5">
+                <Route2 path="/">App</Route2>
+            </div>
         </div>
+
+        //<NavBar links={links} address={defaultAccount} />
     );
 };
 

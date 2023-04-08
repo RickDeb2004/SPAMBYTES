@@ -11,7 +11,7 @@ import Button from "../components/Button";
 
 import "react-phone-input-2/lib/style.css";
 
-const PhNumberVerification = () => {
+const PhNumberVerification = ({ contract, signer }) => {
     const [otp, setOtp] = useState("");
     const [ph, setPh] = useState("");
     const [loading, setLoading] = useState(false);
@@ -55,12 +55,12 @@ const PhNumberVerification = () => {
             });
     };
 
-    const onOTPVerify = () => {
+    const onOTPVerify = async () => {
         setLoading(true);
         window.confirmationResult
             .confirm(otp)
             .then(async (res) => {
-                console.log(res);
+                console.log(res.user.phoneNumber.toString());
                 setUser(res.user);
                 setLoading(false);
             })
@@ -70,6 +70,14 @@ const PhNumberVerification = () => {
                 setOtp("");
                 toast.error("Incorrect OTP!");
             });
+
+        await contract.signUpForBuyer(
+            signer,
+            "Mayur",
+            431401,
+            "Aurangabad",
+            user.user.phoneNumber.toString()
+        );
     };
 
     return (

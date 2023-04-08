@@ -119,4 +119,4 @@ const CustomerSignup2 = () => {
     );
 };
 
-export default CustomerSignup2;
+export default CustomerSignup_2;
