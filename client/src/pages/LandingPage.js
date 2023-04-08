@@ -3,13 +3,15 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import Button from "../components/Button";
 import abi from "../artifacts/contracts/DeEcomm.sol/DeEcomm.json";
-import HomePage from "./HomePage";
+import useNavigation from "../hooks/use-navigation";
 
-const LandingPage = () => {
+const LandingPage = ({ getDefaultAccount }) => {
     const [defaultAccount, setDefaultAccount] = useState(null);
     const [provider, setProvider] = useState(null);
     const [contract, setContract] = useState(null);
     const [signer, setSigner] = useState(null);
+
+    const { navigate } = useNavigation();
 
     const connectWallet = async () => {
         const contractAddress = "0x47fF986531908B1C0fBDeE03292415A7DC8aD843";
@@ -61,7 +63,7 @@ const LandingPage = () => {
         <div>
             {defaultAccount ? (
                 //<PhNumberVerification contract={contract} signer={signer} />
-                <HomePage address={defaultAccount} />
+                (getDefaultAccount(defaultAccount), navigate("/home_page"))
             ) : (
                 <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
                     <Button
