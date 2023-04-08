@@ -12,6 +12,9 @@ import HomePage from "./pages/HomePage";
 
 const App = () => {
     const [defaultAccount, setDefaultAccount] = useState("");
+    const [contract, setContract] = useState(null);
+    const [provider, setProvider] = useState(null);
+    const [signer, setSigner] = useState(null);
 
     const getDefaultAccount = (account) => {
         setDefaultAccount(account);

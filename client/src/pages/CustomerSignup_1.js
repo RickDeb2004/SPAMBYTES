@@ -10,11 +10,15 @@ const CustomerSignup_1 = () => {
     const { navigate } = useNavigation();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(
-            `First Name is ${firstName}, Last Name is ${lastName} and the email address is ${email}`
-        );
-        navigate("/buyer_signup_2");
+        if ((!firstName, !lastName, !email)) {
+            alert("Fill details");
+        } else {
+            e.preventDefault();
+            console.log(
+                `First Name is ${firstName}, Last Name is ${lastName} and the email address is ${email}`
+            );
+            navigate("/buyer_signup_2");
+        }
     };
 
     return (
