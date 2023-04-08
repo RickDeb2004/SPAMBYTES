@@ -15,6 +15,10 @@ const NavBar = () => {
             label: "Modal",
             path: "/modal",
         },
+        {
+            label: "phVerification",
+            path: "/phVeri",
+        },
     ];
 
     const renderedLinks = links.map((link) => {

@@ -7,6 +7,7 @@ import { CgSpinner } from "react-icons/cg";
 import { auth } from "../api/firebase.config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
+import Button from "../components/Button";
 
 import "react-phone-input-2/lib/style.css";
 
@@ -100,9 +101,10 @@ const PhNumberVerification = () => {
                                     className="opt-container "
                                     onFocus={(e) => e.currentTarget.select()}
                                 ></OtpInput>
-                                <button
+                                <Button
+                                    primary
                                     onClick={onOTPVerify}
-                                    className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                                    className="mb-5"
                                 >
                                     {loading && (
                                         <CgSpinner
@@ -111,7 +113,7 @@ const PhNumberVerification = () => {
                                         />
                                     )}
                                     <span>Verify OTP</span>
-                                </button>
+                                </Button>
                             </>
                         ) : (
                             <>
@@ -126,9 +128,10 @@ const PhNumberVerification = () => {
                                     value={ph}
                                     onChange={setPh}
                                 />
-                                <button
+                                <Button
+                                    primary
                                     onClick={onSignup}
-                                    className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                                    className="mb-5"
                                 >
                                     {loading && (
                                         <CgSpinner
@@ -137,7 +140,7 @@ const PhNumberVerification = () => {
                                         />
                                     )}
                                     <span>Send code via SMS</span>
-                                </button>
+                                </Button>
                             </>
                         )}
                     </div>
