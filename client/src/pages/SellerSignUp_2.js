@@ -8,7 +8,7 @@ import countryList from "react-select-country-list";
 const SellerSignup_2 = () => {
     const [address, setAddress] = useState("");
     const [Country, setCountry] = useState("");
-    const [state, setState] = useState("");
+    const [teritory, setTeritory] = useState("");
     const [city, setCity] = useState("");
     const [pincode, setPincode] = useState("");
     const { navigate } = useNavigation();
@@ -40,9 +40,9 @@ const SellerSignup_2 = () => {
                     onChange={changeHandler}
                 />
                 <input
-                    value={state}
+                    value={teritory}
                     placeholder="Enter State/Teritory"
-                    onChange={(e) => setState(e.target.value)}
+                    onChange={(e) => setTeritory(e.target.value)}
                     type="text"
                 />
                 <input

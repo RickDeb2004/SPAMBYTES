@@ -54,11 +54,6 @@ const LandingPage = ({ getDefaultAccount }) => {
         }
     };
 
-    const rederedPages = async () => {
-        let value = await contract.buyerSignUpCheck(defaultAccount.toString());
-        console.log(value);
-    };
-
     return (
         <div>
             {defaultAccount ? (
