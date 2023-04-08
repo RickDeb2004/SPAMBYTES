@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import ReactStars from "react-rating-stars-component";
-import NavBar from "./navbar";
+import NavBar from "../components/NavBar";
 
 function ProductCard({ product, onAddToCart }) {
     return (

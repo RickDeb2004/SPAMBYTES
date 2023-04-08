@@ -10,6 +10,7 @@ import PhNumberVerificationSeller from "./pages/PhNumberVerificationSeller";
 import CustomerSignup_2 from "./pages/CustomerSignup_2";
 import SellerSignup_2 from "./pages/CustomerSignup_2";
 import HomePage from "./pages/HomePage";
+import Home from "./pages/BuyerHome";
 
 const App = () => {
     const [defaultAccount, setDefaultAccount] = useState("");
@@ -102,6 +103,10 @@ const App = () => {
 
             <Route path="/home_page">
                 <HomePage address={defaultAccount} />
+            </Route>
+
+            <Route path="/buyer_home_page">
+                <Home />
             </Route>
         </div>
     );

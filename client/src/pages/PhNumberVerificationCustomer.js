@@ -8,6 +8,7 @@ import { auth } from "../api/firebase.config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import Button from "../components/Button";
+import useNavigation from "../hooks/use-navigation";
 
 import "react-phone-input-2/lib/style.css";
 
@@ -17,6 +18,8 @@ const PhNumberVerificationCustomer = ({ contract, signer }) => {
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
     const [user, setUser] = useState(null);
+
+    const { navigate } = useNavigation();
 
     const onCaptchVerify = () => {
         if (!window.recaptchaVerifier) {
