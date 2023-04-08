@@ -4,7 +4,7 @@ pragma solidity ^0.8.7;
 
 error OutOfStock();
 
-contract DeComm {
+contract DeEcomm {
     enum OrderStatus {
         Placed,
         InChain,
