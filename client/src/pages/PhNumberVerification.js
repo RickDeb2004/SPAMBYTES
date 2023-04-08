@@ -70,14 +70,6 @@ const PhNumberVerification = ({ contract, signer }) => {
                 setOtp("");
                 toast.error("Incorrect OTP!");
             });
-
-        await contract.signUpForBuyer(
-            signer,
-            "Mayur",
-            431401,
-            "Aurangabad",
-            user.user.phoneNumber.toString()
-        );
     };
 
     return (

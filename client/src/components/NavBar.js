@@ -3,7 +3,20 @@ import Link from "./Link";
 import Button from "./Button";
 import Link2 from "./Link";
 
-const NavBar = ({ address }) => {
+const NavBar = ({ address, links }) => {
+    const renderedLinks = links.map((link) => {
+        return (
+            <Link
+                to={link.path}
+                key={link.label}
+                className="mb-3"
+                activeClassName="pt-6"
+            >
+                {link.label}
+            </Link>
+        );
+    });
+
     return (
         <nav className="bg-gray-800">
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -28,7 +41,7 @@ const NavBar = ({ address }) => {
                         </form>
                     </div>
                 </div>
-                <Link2>SignUp</Link2>
+                <div className="">{renderedLinks}</div>
                 <div>{address.slice(0, 6) + "..."}</div>
             </div>
         </nav>
