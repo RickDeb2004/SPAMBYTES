@@ -7,6 +7,7 @@ import ButtonPage from "./pages/ButtonPage";
 import ModalPage from "./pages/ModalPage";
 import Button from "./components/Button";
 import abi from "./artifacts/contracts/DeEcomm.sol/DeEcomm.json";
+import PhNumberVerification from "./pages/PhNumberVerification";
 
 const App = () => {
     const [defaultAccount, setDefaultAccount] = useState(null);
@@ -81,6 +82,9 @@ const App = () => {
                 </Route>
                 <Route path="/modal">
                     <ModalPage />
+                </Route>
+                <Route path="/phVeri">
+                    <PhNumberVerification />
                 </Route>
             </div>
         </div>
