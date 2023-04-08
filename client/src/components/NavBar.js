@@ -1,9 +1,14 @@
 import React from "react";
-import Link from "./Link";
 import Button from "./Button";
-import Link2 from "./Link";
+import useNavigation from "../hooks/use-navigation";
 
-const NavBar = ({ address }) => {
+const NavBar = ({ address, link }) => {
+    const { navigate } = useNavigation();
+
+    const handleClick = () => {
+        navigate(link.path);
+    };
+
     return (
         <nav className="bg-gray-800">
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -28,7 +33,9 @@ const NavBar = ({ address }) => {
                         </form>
                     </div>
                 </div>
-                <Link2>SignUp</Link2>
+                <Button primary onClick={handleClick}>
+                    Sign Up
+                </Button>
                 <div>{address.slice(0, 6) + "..."}</div>
             </div>
         </nav>

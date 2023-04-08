@@ -3,27 +3,27 @@ import { useState } from "react";
 import Button from "../components/Button";
 import useNavigation from "../hooks/use-navigation";
 
-const SellerSignup_1 = () => {
+const CustomerSignup_1 = ({ contract, signer, provider }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const { navigate } = useNavigation();
 
     const handleSubmit = (e) => {
-        if ((!firstName, !setFirstName, !lastName, !email)) {
-            alert("Fill Details");
+        if ((!firstName, !lastName, !email)) {
+            alert("Fill details");
         } else {
             e.preventDefault();
             console.log(
                 `First Name is ${firstName}, Last Name is ${lastName} and the email address is ${email}`
             );
-            navigate("/seller_signup2");
+            navigate("/buyer_signup_2");
         }
     };
 
     return (
         <div>
-            <h1>Seller SignUp</h1>
+            <h1>Buyer SignUp</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     value={firstName}
@@ -51,4 +51,4 @@ const SellerSignup_1 = () => {
     );
 };
 
-export default SellerSignup_1;
+export default CustomerSignup_1;

@@ -2,11 +2,11 @@ import React from "react";
 import classNames from "classnames";
 import useNavigation from "../hooks/use-navigation";
 
-const Link2 = ({ to, children, className, activeClassName }) => {
+const Link = ({ to, children, className, activeClassName }) => {
     const { navigate, currentPath } = useNavigation();
 
     const classes = classNames(
-        "text-blue-500",
+        "text-blue-500 pd-6",
         className,
         currentPath === to && activeClassName
     );
@@ -26,4 +26,4 @@ const Link2 = ({ to, children, className, activeClassName }) => {
     );
 };
 
-export default Link2;
+export default Link;

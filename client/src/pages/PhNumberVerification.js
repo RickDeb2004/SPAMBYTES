@@ -47,7 +47,7 @@ const PhNumberVerification = ({ contract, signer }) => {
                 window.confirmationResult = confirmationResult;
                 setLoading(false);
                 setShowOTP(true);
-                toast.success("OTP sended successfully!");
+                toast.success("OTP sent successfully!");
             })
             .catch((error) => {
                 console.log(error);
@@ -70,18 +70,11 @@ const PhNumberVerification = ({ contract, signer }) => {
                 setOtp("");
                 toast.error("Incorrect OTP!");
             });
-
-        await contract.signUpForBuyer(
-            signer,
-            "Mayur",
-            431401,
-            "Aurangabad",
-            user.user.phoneNumber.toString()
-        );
     };
 
     return (
         <section className="bg-emerald-500 flex items-center justify-center h-screen">
+            <h1>Phone Number Verification</h1>
             <div>
                 <Toaster toastOptions={{ duration: 4000 }} />
                 <div id="recaptcha-container"></div>
