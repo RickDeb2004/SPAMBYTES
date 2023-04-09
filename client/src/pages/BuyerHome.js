@@ -23,7 +23,6 @@ function ProductCard({ product, onAddToCart }) {
 }
 
 function CartItem({ item, onRemoveFromCart }) {
-    
     return (
         <div>
             <h2>{item.name}</h2>
@@ -52,6 +51,11 @@ function Cart({ items, onRemoveFromCart }) {
 
 function Home() {
     const [cartItems, setCartItems] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(null);
+
+    const getSearchTerm = (term) => {
+        setSearchTerm(term);
+    };
 
     function addToCart(product) {
         const newCartItem = {
@@ -81,7 +85,7 @@ function Home() {
                 alt=""
                 src="/960x0-1@2x.png "
             />
-            <NavBar />
+            <NavBar getSearchTerm={getSearchTerm} />
 
             <div className="flex absolute top-[400px] left-[400px] flex space-x-10 ">
                 {products.map((product) => (
@@ -98,4 +102,3 @@ function Home() {
 }
 
 export default Home;
-

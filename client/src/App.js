@@ -107,9 +107,9 @@ const App = () => {
             buyerPhNumber
         );
 
-        if (value) {
-            navigate("/buyer_home_page");
-        }
+        // if (value) {
+        //     navigate("/buyer_home_page");
+        // }
 
         console.log(value);
     };
@@ -136,9 +136,9 @@ const App = () => {
             sellerPhNumber
         );
 
-        if (value) {
-            navigate("/seller_home_page");
-        }
+        // if (value) {
+        //     navigate("/seller_home_page");
+        // }
 
         console.log(value);
     };
