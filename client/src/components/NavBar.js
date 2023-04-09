@@ -48,7 +48,6 @@ const NavBar = ({ address, link, getSearchTerm }) => {
                 <Button primary onClick={handleClick}>
                     Sign Up
                 </Button>
-                <div>{address.slice(0, 6) + "..."}</div>
             </div>
         </nav>
     );

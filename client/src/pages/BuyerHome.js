@@ -80,12 +80,13 @@ function Home() {
 
     return (
         <div>
+            <NavBar getSearchTerm={getSearchTerm} />
+            <Cart items={cartItems} onRemoveFromCart={removeFromCart} />
             <img
                 className="relative top-[0px] left-[0px] w-full h-100% width=device-width"
                 alt=""
                 src="/960x0-1@2x.png "
             />
-            <NavBar getSearchTerm={getSearchTerm} />
 
             <div className="flex absolute top-[400px] left-[400px] flex space-x-10 ">
                 {products.map((product) => (
@@ -96,7 +97,6 @@ function Home() {
                     />
                 ))}
             </div>
-            <Cart items={cartItems} onRemoveFromCart={removeFromCart} />
         </div>
     );
 }

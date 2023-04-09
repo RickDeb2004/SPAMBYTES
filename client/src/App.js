@@ -100,18 +100,14 @@ const App = () => {
         const name = `${buyerName} ${buyerLastName}`;
         const locPinCode = parseInt(buyerPinCode);
 
-        const value = await contract.signUpForBuyer(
+        await contract.signUpForBuyer(
             name,
             locPinCode,
             locationName,
             buyerPhNumber
         );
 
-        // if (value) {
-        //     navigate("/buyer_home_page");
-        // }
-
-        console.log(value);
+        navigate("/buyer_home_page");
     };
 
     const addSellerDetails = async (
@@ -129,16 +125,14 @@ const App = () => {
         const name = `${sellerName} ${sellerLastName}`;
         const locPinCode = parseInt(sellerPinCode);
 
-        const value = await contract.signUpForSeller(
+        await contract.signUpForSeller(
             name,
             locPinCode,
             locationName,
             sellerPhNumber
         );
 
-        if (value) {
-            navigate("/seller_home_page");
-        }
+        navigate("/seller_home_page");
     };
 
     if (
