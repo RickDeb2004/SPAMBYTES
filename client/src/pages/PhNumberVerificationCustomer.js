@@ -12,14 +12,12 @@ import useNavigation from "../hooks/use-navigation";
 
 import "react-phone-input-2/lib/style.css";
 
-const PhNumberVerificationCustomer = ({ contract, signer }) => {
+const PhNumberVerificationCustomer = ({ contract, signer, getPhNo }) => {
     const [otp, setOtp] = useState("");
     const [ph, setPh] = useState("");
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
     const [user, setUser] = useState(null);
-
-    const { navigate } = useNavigation();
 
     const onCaptchVerify = () => {
         if (!window.recaptchaVerifier) {
@@ -74,6 +72,10 @@ const PhNumberVerificationCustomer = ({ contract, signer }) => {
                 toast.error("Incorrect OTP!");
             });
     };
+
+    if (user) {
+        getPhNo(user.phoneNumber.toString());
+    }
 
     return (
         <section className="bg-[url('../public/960x0-1@2x.png')] flex items-center justify-center h-screen">

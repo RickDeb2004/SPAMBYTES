@@ -17,6 +17,15 @@ const App = () => {
     const [contract, setContract] = useState(null);
     const [provider, setProvider] = useState(null);
     const [signer, setSigner] = useState(null);
+    const [buyerName, setBuyerName] = useState(null);
+    const [buyerLastName, setBuyerLastName] = useState(null);
+    const [buyerEmail, setBuyerEmail] = useState(null);
+    const [buyerAddress, setBuyerAddress] = useState(null);
+    const [buyerCountry, setBuyerCountry] = useState(null);
+    const [buyerTeritory, setBuyerTeritory] = useState(null);
+    const [buyerCity, setBuyerCity] = useState(null);
+    const [buyerPinCode, setBuyerPincode] = useState(null);
+    const [buyerPhNumber, setBuyerPhNumber] = useState(null);
 
     const getDefaultAccount = (account) => {
         setDefaultAccount(account);
@@ -32,6 +41,75 @@ const App = () => {
 
     const getSigner = (signer) => {
         setSigner(signer);
+    };
+
+    const getPersonalDetailsBuyer = (firstName, lastName, email) => {
+        setBuyerName(firstName);
+        setBuyerLastName(lastName);
+        setBuyerEmail(email);
+    };
+
+    const getBuyerAddress = (address, Country, teritory, city, pincode) => {
+        setBuyerAddress(address);
+        setBuyerCountry(Country.label);
+        setBuyerTeritory(teritory);
+        setBuyerCity(city);
+        setBuyerPincode(pincode);
+    };
+
+    const getBuyerPhNumber = (phNumber) => {
+        setBuyerPhNumber(phNumber);
+    };
+
+    if (
+        buyerName &&
+        buyerLastName &&
+        buyerEmail &&
+        buyerAddress &&
+        buyerCountry &&
+        buyerTeritory &&
+        buyerCity &&
+        buyerPinCode &&
+        buyerPhNumber
+    ) {
+        addDetails(
+            buyerName,
+            buyerLastName,
+            buyerEmail,
+            buyerAddress,
+            buyerCountry,
+            buyerTeritory,
+            buyerCity,
+            buyerPinCode,
+            buyerPhNumber
+        );
+    } else {
+    }
+
+    const addDetails = async (
+        buyerName,
+        buyerLastName,
+        buyerEmail,
+        buyerAddress,
+        buyerCountry,
+        buyerTeritory,
+        buyerCity,
+        buyerPinCode,
+        buyerPhNumber
+    ) => {
+        const locationName = ` ${buyerAddress} ,${buyerCity}, ${buyerTeritory}, ${buyerCountry}`;
+        const name = `${buyerName} ${buyerLastName}`;
+        const locPinCode = parseInt(buyerPinCode);
+
+        await contract.signUpForBuyer(
+            signer,
+            name,
+            locPinCode,
+            locationName,
+            buyerPhNumber
+        );
+
+        console.log("Success");
     };
 
     return (
@@ -66,6 +144,7 @@ const App = () => {
                     contract={contract}
                     provider={provider}
                     signer={signer}
+                    getDetails={getPersonalDetailsBuyer}
                 />
             </Route>
 
@@ -82,6 +161,7 @@ const App = () => {
                     contract={contract}
                     provider={provider}
                     signer={signer}
+                    getPhNo={getBuyerPhNumber}
                 />
             </Route>
 
@@ -98,6 +178,7 @@ const App = () => {
                     contract={contract}
                     provider={provider}
                     signer={signer}
+                    getAddress={getBuyerAddress}
                 />
             </Route>
 
