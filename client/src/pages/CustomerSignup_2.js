@@ -31,7 +31,7 @@ const CustomerSignup_2 = () => {
 
     return (
         <div className=" bg-[url('../public/960x0-1@2x.png')] bg-cover h-screen">
-            <h1>Buyer SignUp</h1>
+            <h1 className=" absolute top-[90px] left-[600px] text-white text-3xl">Buyer SignUp</h1>
             <form onSubmit={handleSubmit}>
                 <input className="absolute top-[200px] left-[600px]"
                     value={address}
