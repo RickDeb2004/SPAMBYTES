@@ -76,7 +76,7 @@ const PhNumberVerificationCustomer = ({ contract, signer }) => {
     };
 
     return (
-        <section className="bg-emerald-500 flex items-center justify-center h-screen">
+        <section className= className="bg-[url('../public/960x0-1@2x.png')] flex items-center justify-center h-screen">
             <div>
                 <Toaster toastOptions={{ duration: 4000 }} />
                 <div id="recaptcha-container"></div>
