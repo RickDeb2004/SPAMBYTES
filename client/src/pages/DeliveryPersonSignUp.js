@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../components/Button";
 import useNavigation from "../hooks/use-navigation";
 
-const CustomerSignup_1 = () => {
+const DeliverySignup_1 = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -47,4 +47,4 @@ const CustomerSignup_1 = () => {
     );
 };
 
-export default CustomerSignup_1;
+export default DeliverySignup_1;
