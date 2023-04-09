@@ -22,28 +22,29 @@ const SellerSignup_1 = () => {
     };
 
     return (
-        <div>
-            <h1>Seller SignUp</h1>
+        <div className="bg-[url('../public/960x0-1@2x.png')] bg-cover h-screen">
+            
+            <h1 className="text-white text-3xl absolute top-[100px] left-[600px]">Seller SignUp</h1>
             <form onSubmit={handleSubmit}>
-                <input
+                <input className=" absolute top-[200px] left-[400px] rounded"
                     value={firstName}
                     placeholder="Enter First Name"
                     onChange={(e) => setFirstName(e.target.value)}
                     type="text"
                 />
-                <input
+                <input className="absolute top-[200px] left-[750px] rounded"
                     value={lastName}
                     placeholder="Enter Last Name"
                     onChange={(e) => setLastName(e.target.value)}
                     type="text"
                 />
-                <input
+                <input className="absolute top-[400px] left-[600px] rounded"
                     value={email}
                     placeholder="Enter Email Address"
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
                 />
-                <Button primary type="submit">
+                <Button primary type="submit" className="absolute top-[600px] left-[670px]">
                     Continue
                 </Button>
             </form>
@@ -52,3 +53,4 @@ const SellerSignup_1 = () => {
 };
 
 export default SellerSignup_1;
+
