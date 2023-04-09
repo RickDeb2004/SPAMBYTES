@@ -11,12 +11,15 @@ import CustomerSignup_2 from "./pages/CustomerSignup_2";
 import SellerSignup_2 from "./pages/CustomerSignup_2";
 import HomePage from "./pages/HomePage";
 import Home from "./pages/BuyerHome";
+import SellerHome from "./pages/SellerHome";
+import useNavigation from "./hooks/use-navigation";
 
 const App = () => {
     const [defaultAccount, setDefaultAccount] = useState("");
     const [contract, setContract] = useState(null);
     const [provider, setProvider] = useState(null);
     const [signer, setSigner] = useState(null);
+
     const [buyerName, setBuyerName] = useState(null);
     const [buyerLastName, setBuyerLastName] = useState(null);
     const [buyerEmail, setBuyerEmail] = useState(null);
@@ -27,19 +30,22 @@ const App = () => {
     const [buyerPinCode, setBuyerPincode] = useState(null);
     const [buyerPhNumber, setBuyerPhNumber] = useState(null);
 
-    const getDefaultAccount = (account) => {
+    const [sellerName, setSellerName] = useState(null);
+    const [sellerLastName, setSellerLastName] = useState(null);
+    const [sellerEmail, setSellerEmail] = useState(null);
+    const [sellerAddress, setSellerAddress] = useState(null);
+    const [sellerCountry, setSellerCountry] = useState(null);
+    const [sellerTeritory, setSellerTeritory] = useState(null);
+    const [sellerCity, setSellerCity] = useState(null);
+    const [sellerPinCode, setSellerPincode] = useState(null);
+    const [sellerPhNumber, setSellerPhNumber] = useState(null);
+
+    const { navigate } = useNavigation();
+
+    const getChainDetails = (account, contract, provider, signer) => {
         setDefaultAccount(account);
-    };
-
-    const getContract = (contract) => {
         setContract(contract);
-    };
-
-    const getProvider = (provider) => {
         setProvider(provider);
-    };
-
-    const getSigner = (signer) => {
         setSigner(signer);
     };
 
@@ -61,7 +67,25 @@ const App = () => {
         setBuyerPhNumber(phNumber);
     };
 
-    const addDetails = async (
+    const getPersonalDetailsSeller = (firstName, lastName, email) => {
+        setSellerName(firstName);
+        setSellerLastName(lastName);
+        setSellerEmail(email);
+    };
+
+    const getSellerAddress = (address, Country, teritory, city, pincode) => {
+        setSellerAddress(address);
+        setSellerCountry(Country.label);
+        setSellerTeritory(teritory);
+        setSellerCity(city);
+        setSellerPincode(pincode);
+    };
+
+    const getSellerPhNumber = (phNumber) => {
+        setSellerPhNumber(phNumber);
+    };
+
+    const addBuyerDetails = async (
         buyerName,
         buyerLastName,
         buyerEmail,
@@ -76,15 +100,47 @@ const App = () => {
         const name = `${buyerName} ${buyerLastName}`;
         const locPinCode = parseInt(buyerPinCode);
 
-        await contract.signUpForBuyer(
-            signer,
+        const value = await contract.signUpForBuyer(
             name,
             locPinCode,
             locationName,
             buyerPhNumber
         );
 
-        console.log("Success");
+        if (value) {
+            navigate("/buyer_home_page");
+        }
+
+        console.log(value);
+    };
+
+    const addSellerDetails = async (
+        sellerName,
+        sellerLastName,
+        sellerEmail,
+        sellerAddress,
+        sellerCountry,
+        sellerTeritory,
+        sellerCity,
+        sellerPinCode,
+        sellerPhNumber
+    ) => {
+        const locationName = ` ${sellerAddress} ,${sellerCity}, ${sellerTeritory}, ${sellerCountry}`;
+        const name = `${sellerName} ${sellerLastName}`;
+        const locPinCode = parseInt(sellerPinCode);
+
+        const value = await contract.signUpForSeller(
+            name,
+            locPinCode,
+            locationName,
+            sellerPhNumber
+        );
+
+        if (value) {
+            navigate("/seller_home_page");
+        }
+
+        console.log(value);
     };
 
     if (
@@ -98,7 +154,7 @@ const App = () => {
         buyerPinCode &&
         buyerPhNumber
     ) {
-        addDetails(
+        addBuyerDetails(
             buyerName,
             buyerLastName,
             buyerEmail,
@@ -112,15 +168,34 @@ const App = () => {
     } else {
     }
 
+    if (
+        (sellerName,
+        sellerLastName,
+        sellerEmail,
+        sellerAddress,
+        sellerCountry,
+        sellerTeritory,
+        sellerCity,
+        sellerPinCode,
+        sellerPhNumber)
+    ) {
+        addSellerDetails(
+            sellerName,
+            sellerLastName,
+            sellerEmail,
+            sellerAddress,
+            sellerCountry,
+            sellerTeritory,
+            sellerCity,
+            sellerPinCode,
+            sellerPhNumber
+        );
+    }
+
     return (
         <div className="col-span-5">
             <Route path="/">
-                <LandingPage
-                    getDefaultAccount={getDefaultAccount}
-                    getContract={getContract}
-                    getProvider={getProvider}
-                    getSigner={getSigner}
-                />
+                <LandingPage getChainDetails={getChainDetails} />
             </Route>
 
             <Route path="/seller_signup">
@@ -128,6 +203,7 @@ const App = () => {
                     contract={contract}
                     provider={provider}
                     signer={signer}
+                    getDetails={getPersonalDetailsSeller}
                 />
             </Route>
 
@@ -136,6 +212,7 @@ const App = () => {
                     contract={contract}
                     provider={provider}
                     signer={signer}
+                    getAddress={getSellerAddress}
                 />
             </Route>
 
@@ -170,6 +247,7 @@ const App = () => {
                     contract={contract}
                     provider={provider}
                     signer={signer}
+                    getPhNo={getSellerPhNumber}
                 />
             </Route>
 
@@ -188,6 +266,10 @@ const App = () => {
 
             <Route path="/buyer_home_page">
                 <Home />
+            </Route>
+
+            <Route path="/seller_home_page">
+                <SellerHome />
             </Route>
         </div>
     );

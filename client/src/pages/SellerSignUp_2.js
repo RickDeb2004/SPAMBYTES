@@ -5,7 +5,7 @@ import useNavigation from "../hooks/use-navigation";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 
-const SellerSignup_2 = () => {
+const SellerSignup_2 = ({ getAddress }) => {
     const [address, setAddress] = useState("");
     const [Country, setCountry] = useState("");
     const [teritory, setTeritory] = useState("");
@@ -24,6 +24,7 @@ const SellerSignup_2 = () => {
             alert("Fill Details");
         } else {
             e.preventDefault();
+            getAddress(address, Country.label, teritory, city, pincode);
             navigate("/ph_verify_sell");
         }
     };
@@ -70,4 +71,3 @@ const SellerSignup_2 = () => {
 };
 
 export default SellerSignup_2;
-

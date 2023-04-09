@@ -5,7 +5,7 @@ import Button from "../components/Button";
 import abi from "../artifacts/contracts/DeEcomm.sol/DeEcomm.json";
 import useNavigation from "../hooks/use-navigation";
 
-const LandingPage = ({ getDefaultAccount }) => {
+const LandingPage = ({ getChainDetails }) => {
     const [defaultAccount, setDefaultAccount] = useState(null);
     const [provider, setProvider] = useState(null);
     const [contract, setContract] = useState(null);
@@ -43,9 +43,6 @@ const LandingPage = ({ getDefaultAccount }) => {
                 setProvider(provider);
                 setSigner(signer);
                 setContract(contract);
-                console.log(provider);
-                console.log(signer);
-                console.log(contract);
             } else {
                 alert("Please install metamask");
             }
@@ -54,16 +51,15 @@ const LandingPage = ({ getDefaultAccount }) => {
         }
     };
 
-    const rederedPages = async () => {
-        let value = await contract.buyerSignUpCheck(defaultAccount.toString());
-        console.log(value);
-    };
+    if (defaultAccount && provider && contract && signer) {
+        getChainDetails(defaultAccount, contract, provider, signer);
+    }
 
     return (
         <div>
             {defaultAccount ? (
                 //<PhNumberVerification contract={contract} signer={signer} />
-                (getDefaultAccount(defaultAccount), navigate("/home_page"))
+                navigate("/home_page")
             ) : (
                 <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
                     <img

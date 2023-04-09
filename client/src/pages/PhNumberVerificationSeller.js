@@ -11,7 +11,7 @@ import Button from "../components/Button";
 
 import "react-phone-input-2/lib/style.css";
 
-const PhNumberVerificationSeller = ({ contract, signer }) => {
+const PhNumberVerificationSeller = ({ contract, signer, getPhNo }) => {
     const [otp, setOtp] = useState("");
     const [ph, setPh] = useState("");
     const [loading, setLoading] = useState(false);
@@ -71,6 +71,10 @@ const PhNumberVerificationSeller = ({ contract, signer }) => {
                 toast.error("Incorrect OTP!");
             });
     };
+
+    if (user) {
+        getPhNo(user.phoneNumber.toString());
+    }
 
     return (
         <section className="bg-emerald-500 flex items-center justify-center h-screen">
