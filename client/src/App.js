@@ -136,11 +136,9 @@ const App = () => {
             sellerPhNumber
         );
 
-        // if (value) {
-        //     navigate("/seller_home_page");
-        // }
-
-        console.log(value);
+        if (value) {
+            navigate("/seller_home_page");
+        }
     };
 
     if (
