@@ -29,7 +29,7 @@ const SellerSignup_2 = () => {
     };
 
     return (
-        <div>
+        <div className="bg-[url('../public/960x0-1@2x.png')] bg-cover h-screen">
             <h1>Seller SignUp</h1>
             <form onSubmit={handleSubmit}>
                 <input
@@ -70,3 +70,4 @@ const SellerSignup_2 = () => {
 };
 
 export default SellerSignup_2;
+
