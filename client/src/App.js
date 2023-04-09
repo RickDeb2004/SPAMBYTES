@@ -61,31 +61,6 @@ const App = () => {
         setBuyerPhNumber(phNumber);
     };
 
-    if (
-        buyerName &&
-        buyerLastName &&
-        buyerEmail &&
-        buyerAddress &&
-        buyerCountry &&
-        buyerTeritory &&
-        buyerCity &&
-        buyerPinCode &&
-        buyerPhNumber
-    ) {
-        addDetails(
-            buyerName,
-            buyerLastName,
-            buyerEmail,
-            buyerAddress,
-            buyerCountry,
-            buyerTeritory,
-            buyerCity,
-            buyerPinCode,
-            buyerPhNumber
-        );
-    } else {
-    }
-
     const addDetails = async (
         buyerName,
         buyerLastName,
@@ -111,6 +86,31 @@ const App = () => {
 
         console.log("Success");
     };
+
+    if (
+        buyerName &&
+        buyerLastName &&
+        buyerEmail &&
+        buyerAddress &&
+        buyerCountry &&
+        buyerTeritory &&
+        buyerCity &&
+        buyerPinCode &&
+        buyerPhNumber
+    ) {
+        addDetails(
+            buyerName,
+            buyerLastName,
+            buyerEmail,
+            buyerAddress,
+            buyerCountry,
+            buyerTeritory,
+            buyerCity,
+            buyerPinCode,
+            buyerPhNumber
+        );
+    } else {
+    }
 
     return (
         <div className="col-span-5">
