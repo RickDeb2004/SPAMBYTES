@@ -23,6 +23,7 @@ function ProductCard({ product, onAddToCart }) {
 }
 
 function CartItem({ item, onRemoveFromCart }) {
+    
     return (
         <div>
             <h2>{item.name}</h2>
@@ -33,9 +34,11 @@ function CartItem({ item, onRemoveFromCart }) {
 }
 
 function Cart({ items, onRemoveFromCart }) {
+    const totalPrice = items.reduce((total, item) => total + item.price, 0);
     return (
         <div>
             <h2>Cart</h2>
+            <p>Total price: {totalPrice.toFixed(2)}</p>
             {items.map((item) => (
                 <CartItem
                     key={item.id}
@@ -95,3 +98,4 @@ function Home() {
 }
 
 export default Home;
+
