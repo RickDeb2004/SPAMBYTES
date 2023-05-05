@@ -35,4 +35,4 @@ const Bidding = () => {
     );
 };
 export default Bidding;
-.
+
