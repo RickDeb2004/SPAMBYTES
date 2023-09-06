@@ -22,7 +22,7 @@ const Bidding = () => {
                 <Form.Control type="number"  min="0" placeholder="Time" className="input-large w-[300px]" />
             </Form.Group>
             <button className="absolute top-[640px] left-[900px] rounded bg-blue-400">
-                Bid on Time
+                Bidding on Time
             </button>
 
             
